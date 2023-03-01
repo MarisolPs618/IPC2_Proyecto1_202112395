@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<datosMarte>
+    <listaOrganismos>
+        <organismo>
+            <codigo>#33FF44</codigo>
+            <nombre>V</nombre>
+        </organismo>
+        <organismo>
+            <codigo>#FF3333</codigo>
+            <nombre>R</nombre>
+        </organismo>
+    </listaOrganismos>
+    <listadoMuestras>
+        <muestra>
+            <codigo>A1</codigo>
+            <descripcion>["Muestra simple"]</descripcion>
+            <filas>8</filas>
+            <columnas>8</columnas>
+            <listadoCeldasVivas>
+                <celdaViva>
+                    <fila>3</fila>
+                    <columna>3</columna>
+                    <codigoOrganismo>#33FF44</codigoOrganismo>
+                </celdaViva>
+                <celdaViva>
+                    <fila>4</fila>
+                    <columna>4</columna>
+                    <codigoOrganismo>#FF3333</codigoOrganismo>
+                </celdaViva>
+            </listadoCeldasVivas>
+        </muestra>
+            <muestra>
+            <codigo>A2</codigo>
+            <descripcion>["Muestra simple 2"]</descripcion>
+            <filas>6</filas>
+            <columnas>6</columnas>
+            <listadoCeldasVivas>
+                <celdaViva>
+                    <fila>3</fila>
+                    <columna>3</columna>
+                    <codigoOrganismo>#33FF44</codigoOrganismo>
+                </celdaViva>
+                <celdaViva>
+                    <fila>4</fila>
+                    <columna>4</columna>
+                    <codigoOrganismo>#FF3333</codigoOrganismo>
+                </celdaViva>
+            </listadoCeldasVivas>
+    </muestra>
+    <muestra>
+            <codigo>A3</codigo>
+            <descripcion>["Muestra simple 3"]</descripcion>
+            <filas>6</filas>
+            <columnas>6</columnas>
+            <listadoCeldasVivas>
+                <celdaViva>
+                    <fila>3</fila>
+                    <columna>3</columna>
+                    <codigoOrganismo>#33FF44</codigoOrganismo>
+                </celdaViva>
+                <celdaViva>
+                    <fila>4</fila>
+                    <columna>4</columna>
+                    <codigoOrganismo>#FF3333</codigoOrganismo>
+                </celdaViva>
+            </listadoCeldasVivas>
+          </muestra>
+    </listadoMuestras>
+
+</datosMarte>
