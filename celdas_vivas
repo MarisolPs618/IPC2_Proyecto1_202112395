@@ -1,4 +1,0 @@
-digraph {
-	"(3, 3)" [label=V]
-	"(4, 4)" [label=R]
-}

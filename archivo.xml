@@ -18,13 +18,13 @@
             <columnas>8</columnas>
             <listadoCeldasVivas>
                 <celdaViva>
-                    <fila>3</fila>
+                    <fila>4</fila>
                     <columna>3</columna>
                     <codigoOrganismo>#33FF44</codigoOrganismo>
                 </celdaViva>
                 <celdaViva>
-                    <fila>4</fila>
-                    <columna>4</columna>
+                    <fila>5</fila>
+                    <columna>5</columna>
                     <codigoOrganismo>#FF3333</codigoOrganismo>
                 </celdaViva>
             </listadoCeldasVivas>
@@ -36,13 +36,13 @@
             <columnas>6</columnas>
             <listadoCeldasVivas>
                 <celdaViva>
-                    <fila>3</fila>
-                    <columna>3</columna>
+                    <fila>1</fila>
+                    <columna>5</columna>
                     <codigoOrganismo>#33FF44</codigoOrganismo>
                 </celdaViva>
                 <celdaViva>
-                    <fila>4</fila>
-                    <columna>4</columna>
+                    <fila>3</fila>
+                    <columna>2</columna>
                     <codigoOrganismo>#FF3333</codigoOrganismo>
                 </celdaViva>
             </listadoCeldasVivas>
@@ -51,7 +51,7 @@
             <codigo>A3</codigo>
             <descripcion>["Muestra simple 3"]</descripcion>
             <filas>6</filas>
-            <columnas>6</columnas>
+            <columnas>10</columnas>
             <listadoCeldasVivas>
                 <celdaViva>
                     <fila>3</fila>
@@ -62,6 +62,11 @@
                     <fila>4</fila>
                     <columna>4</columna>
                     <codigoOrganismo>#FF3333</codigoOrganismo>
+                </celdaViva>
+                 <celdaViva>
+                    <fila>5</fila>
+                    <columna>3</columna>
+                    <codigoOrganismo>#33FF44</codigoOrganismo>
                 </celdaViva>
             </listadoCeldasVivas>
           </muestra>
