@@ -36,7 +36,49 @@ def leer_archivo_xml(nombre_archivo):
         muestras.append(newMuestra)
     return muestras
 
-muestras = leer_archivo_xml('archivo.xml')
+menu="""
+    Menú Principal
+***********************
+1. Carga de archivo
+2. Manejo de muestras
+3. Retornar XML
+4. Salir
+"""
+menu_principal=True
+while menu_principal==True:
+    print(menu)
+    opcion_menuPrincipal=int(input("Seleccione una opcion: "))
+    if opcion_menuPrincipal==1:
+        print("CARGAR ARCHIVO")
+        archivo=input("Ingrese la ruta del archivo: ")
+        ruta_archivo = archivo.replace('\u202a', '')
+        ruta_archivo = r"{}".format(ruta_archivo)
+        muestras=leer_archivo_xml(ruta_archivo)
+    elif opcion_menuPrincipal==2:
+
+        if muestras==[]:
+           print("ERROR: No se localizó el archivo de entrada")
+           continue
+
+        codigo_muestra=input("Ingrese el codigo de la muestra a trabajar: ")
+        menu2="""
+        1. Graficar 
+        2. Insertar organismo 
+        3. 
+        """
+
+    elif opcion_menuPrincipal==3:
+        print("Devolver XML")
+    else: 
+        opcion_menuPrincipal=False
+    
+
+
+
+
+
+
+##graficar
 codigo_muestra=input("Ingrese el codigo de la muestra: ")
 matriz = Matriz()
 for muestra in muestras:
@@ -53,7 +95,5 @@ for muestra in muestras:
             codigo=celda_viva.codigo_organismo
             nodo = matriz.buscar(fila,columna)
             nodo.valor = codigo
-                
-
-
 matriz.graficar()
+##insertar 
