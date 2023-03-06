@@ -101,9 +101,13 @@ while menu_principal==True:
             elif opcion_Menu2==2:
                 print("INSERTAR ORGANISMO")
                 codigo_insertar="#33FF44"
-                # fila=int(input("ingrese fila: "))
-                # columna=int(input("ingrese columna: "))
-                matriz.insertar_organismo(5,5,"#33FF44")
+                fila=int(input("ingrese fila: "))
+                columna=int(input("ingrese columna: "))
+                insertado = matriz.buscar(fila,columna)
+                if insertado.valor==None:
+                    print("Ya hay un organismo en esta celda")
+                else:
+                    matriz.insertar_organismo(fila,columna,"#33FF44")
 
                 
 

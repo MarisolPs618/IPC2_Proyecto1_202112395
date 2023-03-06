@@ -99,6 +99,9 @@ class Matriz:
     
     def insertar_organismo(self, fila, columna,valor_encerrar):
         celdas_adyacentes=self.buscar_adyacentes(fila, columna)
+        if celdas_adyacentes==[]:
+            print("El organismo no prospera")
+            
         celdas_diferentes=[]
         for celda in celdas_adyacentes:
             if celda.codigo_organismo!=valor_encerrar:
@@ -118,68 +121,22 @@ class Matriz:
                 j += direccion_col
                 valor_celda=self.buscar(i, j).valor
                 if valor_celda==None: 
+                    print("El organismo no prospera")
                     break
                 elif valor_celda==valor_encerrado:
                     celdas_encerradas=celdasV(i, j, valor_celda)
                     encerradas.append(celdas_encerradas)
                 elif valor_celda==valor_encerrar:
-                    for encerrada in encerradas: 
-                        print(encerrada.codigo_organismo+str(encerrada.fila)+str(encerrada.columna))
+                    for encerrada in encerradas:
+                        insertada=self.buscar(fila,columna)
+                        insertada.valor=valor_encerrar
+                        nodo = self.buscar(encerrada.fila,encerrada.columna)
+                        nodo.valor = valor_encerrar
                     break
                 else:
+                    print("El organismo no prospera")
                     break
    
-
-    # def graficar(self):
-    #     if self.filas.primero == None:
-    #         return
-    #     if self.columnas.primero == None:
-    #         return
-
-    #     file = open("Matriz.dot", "w")
-    #     file.write("digraph G{\n")
-    #     file.write("node [shape=plaintext];\n")
-    #     file.write("rankdir=LR;\n")
-    #     file.write("Matriz [\n")
-    #     file.write("label=<<table border='0' cellborder='1' cellspacing='0'> \n")
-
-    #     file.write("<tr>\n")
-    #     file.write("<td></td>\n")
-
-    #     actual = self.columnas.primero
-    #     while actual != None:
-    #         file.write("<td bgcolor=\"#DE0039\">" + str(actual.id) + "</td>\n")
-    #         actual = actual.siguiente
-    #     file.write("</tr>\n")
-
-    #     actual = self.filas.primero
-    #     while actual != None:
-    #         file.write("<tr>\n")
-    #         file.write("<td bgcolor=\"#0062DE\">" + str(actual.id) + "</td>\n")
-
-    #         aux = self.columnas.primero
-    #         while aux != None:
-    #             if actual.acceso != None:
-    #                 if actual.acceso.col == aux.id:
-    #                     ##file.write("<td>" + str(actual.acceso.valor) + "</td>\n")
-    #                     if actual.acceso.valor=="":
-    #                         file.write("<td bgcolor=\"white\"></td>\n")
-    #                     else:
-    #                         file.write("<td bgcolor=\"" + actual.acceso.valor + "\"></td>\n") # Agregar el color de fondo de la celda
-    #                     actual.acceso = actual.acceso.derecha
-    #                 else:
-    #                     file.write("<td></td>\n")
-    #             else:
-    #                 file.write("<td></td>\n")
-    #             aux = aux.siguiente
-
-    #         file.write("</tr>\n")
-    #         actual = actual.siguiente
-
-    #     file.write("</table>>];\n")
-    #     file.write("}")
-    #     file.close()
-    #     os.system("dot -Tpng Matriz.dot -o Matriz.png")
     def graficar(self):
         if self.filas.primero == None:
             return
