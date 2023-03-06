@@ -44,13 +44,24 @@ menu="""
 3. Retornar XML
 4. Salir
 """
+menu2="""
+    1. Graficar 
+    2. Insertar organismo 
+    3. Identificacion de prosperidad
+    4. Estado de muestra
+    5. Limpiar muestra?
+    6. Regresar
+    """
+
+
 menu_principal=True
 while menu_principal==True:
     print(menu)
     opcion_menuPrincipal=int(input("Seleccione una opcion: "))
     if opcion_menuPrincipal==1:
         print("CARGAR ARCHIVO")
-        archivo=input("Ingrese la ruta del archivo: ")
+         ## archivo=input("Ingrese la ruta del archivo: ")
+        archivo='archivo.xml'
         ruta_archivo = archivo.replace('\u202a', '')
         ruta_archivo = r"{}".format(ruta_archivo)
         muestras=leer_archivo_xml(ruta_archivo)
@@ -60,40 +71,55 @@ while menu_principal==True:
            print("ERROR: No se localizó el archivo de entrada")
            continue
 
-        codigo_muestra=input("Ingrese el codigo de la muestra a trabajar: ")
-        menu2="""
-        1. Graficar 
-        2. Insertar organismo 
-        3. 
-        """
+        ##codigo_muestra=input("Ingrese el codigo de la muestra a trabajar: ")
+        codigo_muestra="A3"
+        for muestra in muestras:
+            if muestra.codigo == codigo_muestra:
+                muestraActual=muestra
+        matriz = Matriz()
+        tamaño_filas=muestraActual.filas
+        tamaño_columnas=muestraActual.columnas
+        for fila in range(tamaño_filas+1):
+            for columna in range(tamaño_columnas+1):
+                matriz.insertar(fila, columna, "")
+        for celda_viva in muestraActual.celdas_vivas:
+            fila=int(celda_viva.fila)
+            columna=int(celda_viva.columna)
+            codigo=celda_viva.codigo_organismo
+            nodo = matriz.buscar(fila,columna)
+            nodo.valor = codigo
+       
+
+        menu_secundario=True
+        while menu_secundario==True:
+            print(menu2)
+            opcion_Menu2=int(input("Seleccione una opcion: "))
+            if opcion_Menu2==1:
+                print("GRAFICAR")
+                matriz.graficar()
+
+            elif opcion_Menu2==2:
+                print("INSERTAR ORGANISMO")
+                codigo_insertar="#33FF44"
+                # fila=int(input("ingrese fila: "))
+                # columna=int(input("ingrese columna: "))
+                matriz.insertar_organismo(5,5,"#33FF44")
+
+                
+
+            elif opcion_Menu2==3:
+                print("IDENTIFICACION DE PROSPERIDAD")
+            elif opcion_Menu2==4:
+                print("ESTADO DE MUESTRA")
+            elif opcion_Menu2==6:
+                menu_secundario=False
+                
+
+
+
 
     elif opcion_menuPrincipal==3:
         print("Devolver XML")
     else: 
         opcion_menuPrincipal=False
     
-
-
-
-
-
-
-##graficar
-codigo_muestra=input("Ingrese el codigo de la muestra: ")
-matriz = Matriz()
-for muestra in muestras:
-    if muestra.codigo == codigo_muestra:
-        tamaño_filas=muestra.filas
-        tamaño_columnas=muestra.columnas
-        for fila in range(tamaño_filas+1):
-            for columna in range(tamaño_columnas+1):
-                matriz.insertar(fila, columna, "")
-
-        for celda_viva in muestra.celdas_vivas:
-            fila=int(celda_viva.fila)
-            columna=int(celda_viva.columna)
-            codigo=celda_viva.codigo_organismo
-            nodo = matriz.buscar(fila,columna)
-            nodo.valor = codigo
-matriz.graficar()
-##insertar 

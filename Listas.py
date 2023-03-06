@@ -47,6 +47,15 @@ class ListaEncabezado:
         while actual != None:
             print(actual.id)
             actual = actual.siguiente
+    def __len__(self):
+        current = self.primero
+        count = 0
+        while current is not None:
+            count += 1
+            current = current.siguiente
+        return count
+
+
 class NodoInterno:
     def __init__(self, fila = None, col = None, valor = None) -> None:
         self.fila = fila
@@ -57,3 +66,5 @@ class NodoInterno:
         self.abajo = None
         self.izquierda = None
         self.derecha = None
+
+    

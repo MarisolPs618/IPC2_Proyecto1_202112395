@@ -59,6 +59,11 @@
                     <codigoOrganismo>#33FF44</codigoOrganismo>
                 </celdaViva>
                 <celdaViva>
+                    <fila>5</fila>
+                    <columna>4</columna>
+                    <codigoOrganismo>#FF3333</codigoOrganismo>
+                </celdaViva>
+                <celdaViva>
                     <fila>4</fila>
                     <columna>4</columna>
                     <codigoOrganismo>#FF3333</codigoOrganismo>
