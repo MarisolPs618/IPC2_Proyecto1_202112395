@@ -20,7 +20,7 @@
                 <celdaViva>
                     <fila>4</fila>
                     <columna>3</columna>
-                    <codigoOrganismo>#33FF44</codigoOrganismo>
+                    <codigoOrganismo>verde</codigoOrganismo>
                 </celdaViva>
                 <celdaViva>
                     <fila>5</fila>
@@ -72,6 +72,11 @@
                     <fila>5</fila>
                     <columna>3</columna>
                     <codigoOrganismo>#33FF44</codigoOrganismo>
+                </celdaViva>
+                <celdaViva>
+                    <fila>5</fila>
+                    <columna>5</columna>
+                    <codigoOrganismo>#FF3333</codigoOrganismo>
                 </celdaViva>
             </listadoCeldasVivas>
           </muestra>

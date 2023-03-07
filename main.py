@@ -12,10 +12,12 @@ def leer_archivo_xml(nombre_archivo):
     
     # Crear una lista de organismos
     organismos = {}
+    i=0
     for organismo in root.find('listaOrganismos'):
+        i=i+1
         codigo = organismo.find('codigo').text
         nombre = organismo.find('nombre').text
-        organismos[codigo] = nombre
+        organismos[i] = {'codigo': codigo, 'nombre': nombre, 'contador': i}
         
     # Crear una lista de muestras, cada una con su respectiva lista enlazada de celdas vivas
     muestras = []
@@ -34,7 +36,7 @@ def leer_archivo_xml(nombre_archivo):
             celdas_vivas.append(celda_viva_ob)
         newMuestra=muestra(codigo, descripcion, filas, columnas, celdas_vivas)
         muestras.append(newMuestra)
-    return muestras
+    return muestras,organismos
 
 menu="""
     Menú Principal
@@ -43,14 +45,17 @@ menu="""
 2. Manejo de muestras
 3. Retornar XML
 4. Salir
+***********************
 """
 menu2="""
+         MANEJO DE MUESTRAS
+******************************************
     1. Graficar 
     2. Insertar organismo 
     3. Identificacion de prosperidad
     4. Estado de muestra
-    5. Limpiar muestra?
-    6. Regresar
+    5. Regresar
+******************************************
     """
 
 
@@ -64,7 +69,8 @@ while menu_principal==True:
         archivo='archivo.xml'
         ruta_archivo = archivo.replace('\u202a', '')
         ruta_archivo = r"{}".format(ruta_archivo)
-        muestras=leer_archivo_xml(ruta_archivo)
+        muestras,organismos=leer_archivo_xml(ruta_archivo)
+
     elif opcion_menuPrincipal==2:
 
         if muestras==[]:
@@ -100,30 +106,58 @@ while menu_principal==True:
 
             elif opcion_Menu2==2:
                 print("INSERTAR ORGANISMO")
-                codigo_insertar="#33FF44"
+                for codigo, organismo in organismos.items():
+                    print(str(organismo['contador'])+". "+f"Nombre: {organismo['nombre']} "+ f"Codigo: {organismo['codigo']}")
+                numero_organismo=int(input("Ingrese el codigo del organismo a buscar: "))
+                codigo_insertar=organismos[numero_organismo]['codigo']
                 fila=int(input("ingrese fila: "))
                 columna=int(input("ingrese columna: "))
                 insertado = matriz.buscar(fila,columna)
                 if insertado.valor==None:
                     print("Ya hay un organismo en esta celda")
                 else:
-                    matriz.insertar_organismo(fila,columna,"#33FF44")
-
-                
+                    matriz.insertar_organismo(fila, columna, codigo_insertar)
 
             elif opcion_Menu2==3:
                 print("IDENTIFICACION DE PROSPERIDAD")
+                print("********************************")
+                print("LISTADO DE ORGANISMO")
+                for codigo, organismo in organismos.items():
+                    print(str(organismo['contador'])+". "+f"Nombre: {organismo['nombre']} "+ f"Codigo: {organismo['codigo']}")
+                numero_organismo=int(input("Ingrese el codigo del organismo a buscar: "))
+                codigo_organismo=organismos[numero_organismo]['codigo']
+                celdas_prospera=matriz.verificacion_prosperidad(codigo_organismo)
+
+                if celdas_prospera==[]:
+                    print("No existen celdas donde el organismo pueda prosperar")
+                else: 
+                    print("El organismo "+organismos[numero_organismo]['nombre']+" prospera en las siguientes celdas: ")
+                    for celdas in celdas_prospera:
+                        print(celdas)
+
             elif opcion_Menu2==4:
+
                 print("ESTADO DE MUESTRA")
-            elif opcion_Menu2==6:
-                menu_secundario=False
+                for codigo, organismo in organismos.items():
+                    print("El organismo "f"Nombre: {organismo['nombre']} "+ f"Codigo: {organismo['codigo']}")
+                    codigo_organismo=organismo['codigo']
+                    celdas_prosperar=matriz.verificacion_prosperidad(codigo_organismo)
+                    if celdas_prosperar==[]:
+                        print("No existen celdas donde el organismo pueda prosperar")
+                    else: 
+                        print(" Prospera en las siguientes celdas: ")
+                        for celdas in celdas_prosperar:
+                            print(celdas)
                 
+                    
 
-
-
-
+            elif opcion_Menu2==5:
+                menu_secundario=False
+            else:
+                print("Opcion invalida")
+                
     elif opcion_menuPrincipal==3:
         print("Devolver XML")
-    else: 
-        opcion_menuPrincipal=False
+    elif opcion_menuPrincipal==4: 
+        menu_principal=False
     

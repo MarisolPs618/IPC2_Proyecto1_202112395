@@ -110,6 +110,7 @@ class Matriz:
         
         for organismo in celdas_diferentes:
             encerradas=[]
+         
             valor_encerrado=organismo.codigo_organismo
             direccion_fila=organismo.fila-fila
             direccion_col=organismo.columna-columna
@@ -136,7 +137,55 @@ class Matriz:
                 else:
                     print("El organismo no prospera")
                     break
-   
+           
+    def verificar_insercion(self, fila, columna,valor_encerrar):
+        prospera=False
+        celdas_adyacentes=self.buscar_adyacentes(fila, columna)
+        if celdas_adyacentes==[]:
+            prospera=False
+            
+        celdas_diferentes=[]
+        for celda in celdas_adyacentes:
+            if celda.codigo_organismo!=valor_encerrar:
+                celdas_diferentes.append(celda)
+        filas_matriz, columnas_matriz=self.get_dimensiones()
+        
+        for organismo in celdas_diferentes:
+            encerradas=[]
+            valor_encerrado=organismo.codigo_organismo
+            direccion_fila=organismo.fila-fila
+            direccion_col=organismo.columna-columna
+            i = fila
+            j = columna
+            while i >= 0 and i < filas_matriz and j >= 0 and j <columnas_matriz :
+                # Hacer algo con la celda (i, j)
+                i += direccion_fila
+                j += direccion_col
+                valor_celda=self.buscar(i, j).valor
+                if valor_celda==None: 
+                    prospera=False
+                    break
+                elif valor_celda==valor_encerrado:
+                    celdas_encerradas=celdasV(i, j, valor_celda)
+                    encerradas.append(celdas_encerradas)
+                elif valor_celda==valor_encerrar:
+                    prospera=True
+                    break
+                else:
+                    prospera=False
+                    break
+        return prospera
+    def verificacion_prosperidad(self,codigo_organismo):
+        filas_matriz, columnas_matriz=self.get_dimensiones()
+        celdas_prospera=[]
+        for fila in range(filas_matriz):
+            for columna in range(columnas_matriz):   
+                prospera=self.verificar_insercion(fila,columna,codigo_organismo)
+                if prospera==True and self.buscar(fila,columna).valor=="":
+                    celdasP=fila,columna
+                    celdas_prospera.append(celdasP)
+        return celdas_prospera
+
     def graficar(self):
         if self.filas.primero == None:
             return
