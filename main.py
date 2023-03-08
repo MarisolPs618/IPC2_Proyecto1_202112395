@@ -127,6 +127,7 @@ while menu_principal==True:
                     else: 
                         print("prospera")
                         muestraActual.celdas_vivas.append(celdasV(fila, columna, codigo_insertar))
+                input()
                 
 
             elif opcion_Menu2==3:
@@ -174,7 +175,6 @@ while menu_principal==True:
         tree = ET.ElementTree(new_root)
         # Agregar los organismos al nuevo documento
         lista_organismos = ET.SubElement(new_root, "listaOrganismos")
-        muestras[0].celdas_vivas[0].codigo_organismo = "#33FF44"  # Cambiar el código de la primera celda viva de la primera muestra
         for codigo, organismo in organismos.items():
             org = ET.SubElement(lista_organismos, "organismo")
             codigo = ET.SubElement(org, "codigo")
