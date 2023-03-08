@@ -5,34 +5,20 @@ Matriz [
 label=<<table border='0' cellborder='1' cellspacing='0'> 
 <tr>
 <td></td>
-<td bgcolor="#DE0039">0</td>
-<td bgcolor="#DE0039">1</td>
-<td bgcolor="#DE0039">2</td>
-<td bgcolor="#DE0039">3</td>
-<td bgcolor="#DE0039">4</td>
-<td bgcolor="#DE0039">5</td>
-<td bgcolor="#DE0039">6</td>
-<td bgcolor="#DE0039">7</td>
-<td bgcolor="#DE0039">8</td>
-<td bgcolor="#DE0039">9</td>
-<td bgcolor="#DE0039">10</td>
+<td bgcolor="gray87">0</td>
+<td bgcolor="gray87">1</td>
+<td bgcolor="gray87">2</td>
+<td bgcolor="gray87">3</td>
+<td bgcolor="gray87">4</td>
+<td bgcolor="gray87">5</td>
+<td bgcolor="gray87">6</td>
+<td bgcolor="gray87">7</td>
+<td bgcolor="gray87">8</td>
+<td bgcolor="gray87">9</td>
+<td bgcolor="gray87">10</td>
 </tr>
 <tr>
-<td bgcolor="#0062DE">0</td>
-<td bgcolor="white"></td>
-<td bgcolor="white"></td>
-<td bgcolor="white"></td>
-<td bgcolor="white"></td>
-<td bgcolor="white"></td>
-<td bgcolor="white"></td>
-<td bgcolor="white"></td>
-<td bgcolor="white"></td>
-<td bgcolor="white"></td>
-<td bgcolor="white"></td>
-<td bgcolor="white"></td>
-</tr>
-<tr>
-<td bgcolor="#0062DE">1</td>
+<td bgcolor="gray87">0</td>
 <td bgcolor="white"></td>
 <td bgcolor="white"></td>
 <td bgcolor="white"></td>
@@ -46,7 +32,7 @@ label=<<table border='0' cellborder='1' cellspacing='0'>
 <td bgcolor="white"></td>
 </tr>
 <tr>
-<td bgcolor="#0062DE">2</td>
+<td bgcolor="gray87">1</td>
 <td bgcolor="white"></td>
 <td bgcolor="white"></td>
 <td bgcolor="white"></td>
@@ -60,7 +46,21 @@ label=<<table border='0' cellborder='1' cellspacing='0'>
 <td bgcolor="white"></td>
 </tr>
 <tr>
-<td bgcolor="#0062DE">3</td>
+<td bgcolor="gray87">2</td>
+<td bgcolor="white"></td>
+<td bgcolor="white"></td>
+<td bgcolor="white"></td>
+<td bgcolor="white"></td>
+<td bgcolor="white"></td>
+<td bgcolor="white"></td>
+<td bgcolor="white"></td>
+<td bgcolor="white"></td>
+<td bgcolor="white"></td>
+<td bgcolor="white"></td>
+<td bgcolor="white"></td>
+</tr>
+<tr>
+<td bgcolor="gray87">3</td>
 <td bgcolor="white"></td>
 <td bgcolor="white"></td>
 <td bgcolor="white"></td>
@@ -74,12 +74,12 @@ label=<<table border='0' cellborder='1' cellspacing='0'>
 <td bgcolor="white"></td>
 </tr>
 <tr>
-<td bgcolor="#0062DE">4</td>
+<td bgcolor="gray87">4</td>
 <td bgcolor="white"></td>
 <td bgcolor="white"></td>
 <td bgcolor="white"></td>
 <td bgcolor="white"></td>
-<td bgcolor="#FF3333"></td>
+<td bgcolor="#33FF44"></td>
 <td bgcolor="white"></td>
 <td bgcolor="white"></td>
 <td bgcolor="white"></td>
@@ -88,13 +88,13 @@ label=<<table border='0' cellborder='1' cellspacing='0'>
 <td bgcolor="white"></td>
 </tr>
 <tr>
-<td bgcolor="#0062DE">5</td>
+<td bgcolor="gray87">5</td>
 <td bgcolor="white"></td>
 <td bgcolor="white"></td>
 <td bgcolor="white"></td>
 <td bgcolor="#33FF44"></td>
 <td bgcolor="#FF3333"></td>
-<td bgcolor="#FF3333"></td>
+<td bgcolor="#33FF44"></td>
 <td bgcolor="white"></td>
 <td bgcolor="white"></td>
 <td bgcolor="white"></td>
@@ -102,14 +102,14 @@ label=<<table border='0' cellborder='1' cellspacing='0'>
 <td bgcolor="white"></td>
 </tr>
 <tr>
-<td bgcolor="#0062DE">6</td>
+<td bgcolor="gray87">6</td>
 <td bgcolor="white"></td>
 <td bgcolor="white"></td>
 <td bgcolor="white"></td>
 <td bgcolor="white"></td>
 <td bgcolor="white"></td>
 <td bgcolor="white"></td>
-<td bgcolor="white"></td>
+<td bgcolor="#33FF44"></td>
 <td bgcolor="white"></td>
 <td bgcolor="white"></td>
 <td bgcolor="white"></td>

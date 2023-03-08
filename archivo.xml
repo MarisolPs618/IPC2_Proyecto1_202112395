@@ -20,7 +20,7 @@
                 <celdaViva>
                     <fila>4</fila>
                     <columna>3</columna>
-                    <codigoOrganismo>verde</codigoOrganismo>
+                    <codigoOrganismo>#FF3333</codigoOrganismo>
                 </celdaViva>
                 <celdaViva>
                     <fila>5</fila>

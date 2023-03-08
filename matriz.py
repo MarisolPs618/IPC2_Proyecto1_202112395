@@ -85,7 +85,7 @@ class Matriz:
         celdas = []
         for i in range(fila-1, fila+2):
             for j in range(columna-1, columna+2):
-                if self.es_valida(i, j) and (i, j) != (fila, columna):
+                if self.es_valida(i, j) and (i, j) != (fila, columna): 
                     valor_celda = self.buscar(i, j).valor
                     if valor_celda != "":
                         celdas_ady = celdasV(i, j, valor_celda)
@@ -108,6 +108,9 @@ class Matriz:
                 celdas_diferentes.append(celda)
         filas_matriz, columnas_matriz=self.get_dimensiones()
         
+        if celdas_diferentes==[]:
+            print("El organismo no prospera")
+
         for organismo in celdas_diferentes:
             encerradas=[]
          
@@ -117,10 +120,10 @@ class Matriz:
             i = fila
             j = columna
             while i >= 0 and i < filas_matriz and j >= 0 and j <columnas_matriz :
-                # Hacer algo con la celda (i, j)
                 i += direccion_fila
                 j += direccion_col
-                valor_celda=self.buscar(i, j).valor
+                if self.buscar(i, j) is not None: 
+                    valor_celda=self.buscar(i, j).valor
                 if valor_celda==None: 
                     print("El organismo no prospera")
                     break
@@ -161,7 +164,8 @@ class Matriz:
                 # Hacer algo con la celda (i, j)
                 i += direccion_fila
                 j += direccion_col
-                valor_celda=self.buscar(i, j).valor
+                if self.buscar(i, j) is not None: 
+                    valor_celda=self.buscar(i, j).valor
                 if valor_celda==None: 
                     prospera=False
                     break
@@ -204,14 +208,14 @@ class Matriz:
 
         actual = self.columnas.primero
         while actual != None:
-            file.write("<td bgcolor=\"#DE0039\">" + str(actual.id) + "</td>\n")
+            file.write("<td bgcolor=\"gray87\">" + str(actual.id) + "</td>\n")
             actual = actual.siguiente
         file.write("</tr>\n")
 
         actual = self.filas.primero
         while actual != None:
             file.write("<tr>\n")
-            file.write("<td bgcolor=\"#0062DE\">" + str(actual.id) + "</td>\n")
+            file.write("<td bgcolor=\"gray87\">" + str(actual.id) + "</td>\n")
 
             aux = actual.acceso
             actual_col = self.columnas.primero

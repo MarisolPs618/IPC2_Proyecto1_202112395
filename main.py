@@ -5,6 +5,7 @@ from matriz import Matriz
 
 
 
+muestras = []
 def leer_archivo_xml(nombre_archivo):
     # Parsear el archivo XML
     tree = ET.parse(nombre_archivo)
@@ -20,11 +21,10 @@ def leer_archivo_xml(nombre_archivo):
         organismos[i] = {'codigo': codigo, 'nombre': nombre, 'contador': i}
         
     # Crear una lista de muestras, cada una con su respectiva lista enlazada de celdas vivas
-    muestras = []
- 
+
     for sample in root.findall('listadoMuestras/muestra'):
         codigo=str(sample.find('codigo').text)
-        descripcion = eval(sample.find('descripcion').text)
+        descripcion = str(sample.find('descripcion').text)
         filas = int(sample.find('filas').text)
         columnas = int(sample.find('columnas').text)
         celdas_vivas = []
@@ -65,8 +65,7 @@ while menu_principal==True:
     opcion_menuPrincipal=int(input("Seleccione una opcion: "))
     if opcion_menuPrincipal==1:
         print("CARGAR ARCHIVO")
-         ## archivo=input("Ingrese la ruta del archivo: ")
-        archivo='archivo.xml'
+        archivo=input("Ingrese la ruta del archivo: ")
         ruta_archivo = archivo.replace('\u202a', '')
         ruta_archivo = r"{}".format(ruta_archivo)
         muestras,organismos=leer_archivo_xml(ruta_archivo)
@@ -76,9 +75,14 @@ while menu_principal==True:
         if muestras==[]:
            print("ERROR: No se localizó el archivo de entrada")
            continue
+        contador=0
+        for muestra_recorrido in muestras:
+            contador=contador+1
+            print(str(contador)+". "+muestra_recorrido.codigo)
 
-        ##codigo_muestra=input("Ingrese el codigo de la muestra a trabajar: ")
-        codigo_muestra="A3"
+        muestra_trabajar=int(input("Ingrese el numero de la muestra a trabajar: "))
+        codigo_muestra=muestras[muestra_trabajar-1].codigo
+
         for muestra in muestras:
             if muestra.codigo == codigo_muestra:
                 muestraActual=muestra
@@ -134,6 +138,7 @@ while menu_principal==True:
                     print("El organismo "+organismos[numero_organismo]['nombre']+" prospera en las siguientes celdas: ")
                     for celdas in celdas_prospera:
                         print(celdas)
+                input()
 
             elif opcion_Menu2==4:
 
@@ -148,9 +153,9 @@ while menu_principal==True:
                         print(" Prospera en las siguientes celdas: ")
                         for celdas in celdas_prosperar:
                             print(celdas)
+                input()
                 
-                    
-
+                
             elif opcion_Menu2==5:
                 menu_secundario=False
             else:
