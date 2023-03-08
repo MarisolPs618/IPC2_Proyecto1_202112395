@@ -98,9 +98,10 @@ class Matriz:
         return (num_filas, num_columnas)
     
     def insertar_organismo(self, fila, columna,valor_encerrar):
+        prosperidad=False
         celdas_adyacentes=self.buscar_adyacentes(fila, columna)
         if celdas_adyacentes==[]:
-            print("El organismo no prospera")
+            prosperidad=False
             
         celdas_diferentes=[]
         for celda in celdas_adyacentes:
@@ -109,7 +110,7 @@ class Matriz:
         filas_matriz, columnas_matriz=self.get_dimensiones()
         
         if celdas_diferentes==[]:
-            print("El organismo no prospera")
+            prosperidad=False
 
         for organismo in celdas_diferentes:
             encerradas=[]
@@ -125,12 +126,13 @@ class Matriz:
                 if self.buscar(i, j) is not None: 
                     valor_celda=self.buscar(i, j).valor
                 if valor_celda==None: 
-                    print("El organismo no prospera")
+                    prosperidad=False
                     break
                 elif valor_celda==valor_encerrado:
                     celdas_encerradas=celdasV(i, j, valor_celda)
                     encerradas.append(celdas_encerradas)
                 elif valor_celda==valor_encerrar:
+                    prosperidad=True
                     for encerrada in encerradas:
                         insertada=self.buscar(fila,columna)
                         insertada.valor=valor_encerrar
@@ -138,8 +140,9 @@ class Matriz:
                         nodo.valor = valor_encerrar
                     break
                 else:
-                    print("El organismo no prospera")
+                    prosperidad=False
                     break
+        return prosperidad
            
     def verificar_insercion(self, fila, columna,valor_encerrar):
         prospera=False

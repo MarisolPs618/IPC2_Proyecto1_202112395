@@ -1,4 +1,5 @@
 import xml.etree.ElementTree as ET
+import xml.dom.minidom as minidom
 from Muestras import muestra
 from Muestras import celdasV
 from matriz import Matriz
@@ -10,7 +11,7 @@ def leer_archivo_xml(nombre_archivo):
     # Parsear el archivo XML
     tree = ET.parse(nombre_archivo)
     root = tree.getroot()
-    
+
     # Crear una lista de organismos
     organismos = {}
     i=0
@@ -19,7 +20,7 @@ def leer_archivo_xml(nombre_archivo):
         codigo = organismo.find('codigo').text
         nombre = organismo.find('nombre').text
         organismos[i] = {'codigo': codigo, 'nombre': nombre, 'contador': i}
-        
+
     # Crear una lista de muestras, cada una con su respectiva lista enlazada de celdas vivas
 
     for sample in root.findall('listadoMuestras/muestra'):
@@ -50,8 +51,8 @@ menu="""
 menu2="""
          MANEJO DE MUESTRAS
 ******************************************
-    1. Graficar 
-    2. Insertar organismo 
+    1. Graficar
+    2. Insertar organismo
     3. Identificacion de prosperidad
     4. Estado de muestra
     5. Regresar
@@ -98,7 +99,7 @@ while menu_principal==True:
             codigo=celda_viva.codigo_organismo
             nodo = matriz.buscar(fila,columna)
             nodo.valor = codigo
-       
+
 
         menu_secundario=True
         while menu_secundario==True:
@@ -120,7 +121,13 @@ while menu_principal==True:
                 if insertado.valor==None:
                     print("Ya hay un organismo en esta celda")
                 else:
-                    matriz.insertar_organismo(fila, columna, codigo_insertar)
+                    prosperidad= matriz.insertar_organismo(fila, columna, codigo_insertar)
+                    if prosperidad==False:
+                        print("El organismo no puede prosperar")
+                    else: 
+                        print("prospera")
+                        muestraActual.celdas_vivas.append(celdasV(fila, columna, codigo_insertar))
+                
 
             elif opcion_Menu2==3:
                 print("IDENTIFICACION DE PROSPERIDAD")
@@ -134,7 +141,7 @@ while menu_principal==True:
 
                 if celdas_prospera==[]:
                     print("No existen celdas donde el organismo pueda prosperar")
-                else: 
+                else:
                     print("El organismo "+organismos[numero_organismo]['nombre']+" prospera en las siguientes celdas: ")
                     for celdas in celdas_prospera:
                         print(celdas)
@@ -149,20 +156,57 @@ while menu_principal==True:
                     celdas_prosperar=matriz.verificacion_prosperidad(codigo_organismo)
                     if celdas_prosperar==[]:
                         print("No existen celdas donde el organismo pueda prosperar")
-                    else: 
+                    else:
                         print(" Prospera en las siguientes celdas: ")
                         for celdas in celdas_prosperar:
                             print(celdas)
                 input()
-                
-                
+
+
             elif opcion_Menu2==5:
                 menu_secundario=False
             else:
                 print("Opcion invalida")
-                
+
     elif opcion_menuPrincipal==3:
         print("Devolver XML")
-    elif opcion_menuPrincipal==4: 
+        new_root = ET.Element("datosMarte")
+        tree = ET.ElementTree(new_root)
+        # Agregar los organismos al nuevo documento
+        lista_organismos = ET.SubElement(new_root, "listaOrganismos")
+        muestras[0].celdas_vivas[0].codigo_organismo = "#33FF44"  # Cambiar el código de la primera celda viva de la primera muestra
+        for codigo, organismo in organismos.items():
+            org = ET.SubElement(lista_organismos, "organismo")
+            codigo = ET.SubElement(org, "codigo")
+            codigo.text = organismo['codigo']
+            nombre = ET.SubElement(org, "nombre")
+            nombre.text = organismo['nombre']
+
+        # Agregar las muestras al nuevo documento
+        listado_muestras = ET.SubElement(new_root, "listadoMuestras")
+        for muestra in muestras:
+            m = ET.SubElement(listado_muestras, "muestra")
+            ET.SubElement(m, "codigo").text = muestra.codigo
+            ET.SubElement(m, "descripcion").text = muestra.descripcion
+            ET.SubElement(m, "filas").text = str(muestra.filas)
+            ET.SubElement(m, "columnas").text = str(muestra.columnas)
+            listado_celdas_vivas = ET.SubElement(m, "listadoCeldasVivas")
+            for celda_viva in muestra.celdas_vivas:
+                cv = ET.SubElement(listado_celdas_vivas, "celdaViva")
+                ET.SubElement(cv, "fila").text = str(celda_viva.fila)
+                ET.SubElement(cv, "columna").text = str(celda_viva.columna)
+                ET.SubElement(cv, "codigoOrganismo").text = str(celda_viva.codigo_organismo)
+        xml_string = minidom.parseString(ET.tostring(new_root)).toprettyxml(indent="\t")
+        with open("nuevo_archivo.xml", "w") as file:
+            file.write(xml_string)
+
+       
+
+
+
+    elif opcion_menuPrincipal==4:
         menu_principal=False
-    
+    else:
+        print("Opcion invalida")
+
+
